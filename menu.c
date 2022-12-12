@@ -240,6 +240,7 @@ void findMenu()
 			menuNode = menuNode->nxt;
 			if (menu->id == id)
 			{
+				system("cls");
 				printf("--------------------------------------------------\n");
 				printf("                     ²éÑ¯½á¹û\n");
 				printf("--------------------------------------------------\n");

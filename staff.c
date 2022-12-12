@@ -60,7 +60,7 @@ void addStaff()
     gotoXY(18, 9);
 	printf("请输入职位：");
 	gotoXY(55, 6);
-	printf("0: 管理员 1: 业务员 2: 经理");
+	printf("0: 管理员 1: 服务员 2: 经理");
 	gotoXY(30, 9);
 	role = getChar('0', '2');
     if(!role) return;

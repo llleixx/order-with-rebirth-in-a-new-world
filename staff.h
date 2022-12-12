@@ -1,8 +1,8 @@
-#include "global.h"
-#include "common.h"
 #ifndef _STAFF_H_
 #define _STAFF_H_
 
+#include "global.h"
+#include "common.h"
 #include "global.h"
 
 void addStaff();

@@ -42,7 +42,7 @@ void readFile(char *str, LinkList* head, int size)
     {
         data = malloc(size);
         int n = fread(data, size, 1, fp);
-        if(!n) return;
+        if(!n) return;  // 如果没有读取到一个 size 大小的数据
         tail = addNode2(tail, data);
     }
     fclose(fp);

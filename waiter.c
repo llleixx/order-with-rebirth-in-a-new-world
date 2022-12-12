@@ -7,6 +7,7 @@
 extern LinkList *billHead, *tableHead, *orderHead, *menuHead;
 extern Staff *curStaff;
 
+/// @brief 服务员界面
 void waiterView()
 {
     while(true)
@@ -61,7 +62,8 @@ void waiterView()
     }
 }
 
-void openDesk()//开桌
+/// @brief 开桌
+void openDesk()
 {
     while(true)
     {
@@ -151,6 +153,7 @@ void openDesk()//开桌
     }
 }
 
+/// @brief 点菜
 void orderDish()
 {
     while (true)
@@ -337,6 +340,7 @@ void orderDish()
     }
 }
 
+/// @brief 结账
 void payBill()
 {
     while(true)
