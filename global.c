@@ -1,5 +1,7 @@
 #include "global.h"
 
+/// @brief 打印台桌
+/// @param data 台桌节点
 void printStaff(void *data)
 {
     Staff *staff = (Staff*)data;
