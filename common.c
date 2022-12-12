@@ -44,7 +44,7 @@ bool getString(char str[], int maxLen, int putType, bool isPlaintext)
         else if(ch == 0x1b) return false; // esc键，输入失败
         else if(ch == 0x0d && len)
         {
-            str[len] = '\0';
+            str[len] = '\0'; // 字符串结尾标志
             break; // 回车键，输入成功
         } 
     }
@@ -56,8 +56,8 @@ bool getString(char str[], int maxLen, int putType, bool isPlaintext)
 void getTime(char returnTime[])
 {
     time_t time1;
-    time(&time1);
-    struct tm *p = gmtime(&time1);
+    time(&time1);  // 返回 CUT 时间到当前秒数
+    struct tm *p = localtime(&time1); // 
     sprintf(returnTime, "%04d%02d%02d%02d%02d%02d", p->tm_year + 1900, p->tm_mon + 1, p->tm_mday, p->tm_hour, p->tm_min, p->tm_sec);
 }
 

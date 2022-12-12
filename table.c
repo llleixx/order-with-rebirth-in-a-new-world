@@ -5,6 +5,7 @@
 
 extern LinkList *tableHead; // 台桌头结点
 
+/// @brief 台桌界面
 void tableView()
 {
     while(true)
@@ -48,8 +49,8 @@ void tableView()
 }
 
 
-// 添加
-void addTable() // 
+/// @brief 添加台桌
+void addTable()
 {
     system("cls");
 
@@ -93,12 +94,12 @@ void addTable() //
 	if (ch == '1')
 	{
         table = (Table*)malloc(sizeof(Table));
-        if (tableHead->nxt != NULL)
+        if (tableHead->nxt != NULL) // 如果当前存在台桌
         {
             Table *firstTable = (Table*)tableHead->nxt->data;
             table->id = firstTable->id + 1;
         }
-        else table->id = 1000;
+        else table->id = 1000;  // 如果当前不存在台桌
         table->flag = flag - 48;
         strcpy(table->desc, desc);
 		addNode(tableHead, table);
@@ -119,7 +120,7 @@ void addTable() //
 	}
 }
 
-// 修改
+/// @brief 修改台桌
 void modifyTable()
 {
     while(true)
@@ -196,7 +197,8 @@ void modifyTable()
         getchar();
     }
 }
-// 删除
+
+/// @brief 删除台桌
 void deleteTable()
 {
     while(true)
@@ -261,6 +263,7 @@ void deleteTable()
     }
 }
 
+/// @brief 查询台桌
 void findTable()
 {
     while(true)

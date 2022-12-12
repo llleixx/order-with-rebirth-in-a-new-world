@@ -4,18 +4,18 @@
 
 extern LinkList *billHead;
 
+/// @brief 账单查询界面
 void billView()
 {
     while(true)
     {
         system("cls");
-
+        // 界面
         printf("--------------------------------------------------\n");
         printf("                      账单查询\n");
         printf("--------------------------------------------------\n");
         gotoXY(0, 15);
         printf("-------------------------------------------------\n");
-
         gotoXY(0,6);
         printf("                  1: 未付款查询\n");
         printf("                  2: 已付款查询\n");
@@ -51,11 +51,12 @@ void queryUnpaidBill()
 {
     system("cls");
 
+    // 存储输入的起始时间
     char startTime[9] = {0};
     char startYear[5];
     char startMonth[3];
     char startDay[3];
-
+    // 存储输入的结束时间
     char endTime[9] = {0};
     char endYear[5];
     char endMonth[3];
@@ -104,6 +105,7 @@ void queryUnpaidBill()
     gotoXY(40, 8);
     if(!getString(endDay, 2, 3, 1)) return;
 
+    // 格式化到 startTime，endTime
     sprintf(startTime, "%04s%02s%02s", startYear, startMonth, startDay);
     sprintf(endTime, "%04s%02s%02s", endYear, endMonth, endDay);
 
@@ -116,7 +118,7 @@ void queryUnpaidBill()
     printf("------------------------------------------------------------------\n");
     printf("流水号                      服务员编号  台桌编号  时间      金额\n");
     putchar('\n');
-
+    // 遍历账单
     while(billNode != NULL)
     {
         bill = (Bill*)billNode->data;
@@ -135,12 +137,12 @@ void queryUnpaidBill()
 void queryPaidBill()
 {
     system("cls");
-
+    // 存储输入的起始时间
     char startTime[9] = {0};
     char startYear[5];
     char startMonth[3];
     char startDay[3];
-
+    // 存储输入的结束日期
     char endTime[9] = {0};
     char endYear[5];
     char endMonth[3];
@@ -201,7 +203,7 @@ void queryPaidBill()
     printf("------------------------------------------------------------------\n");
     printf("流水号                      服务员编号  台桌编号  时间      金额\n");
     putchar('\n');
-
+    // 遍历账单
     while(billNode != NULL)
     {
         bill = (Bill*)billNode->data;

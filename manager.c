@@ -8,6 +8,7 @@
 
 extern LinkList *billHead;
 
+/// @brief 经理界面
 void managerView()
 {
     while(true)
@@ -52,12 +53,12 @@ void managerView()
 void queryTurnover()
 {
     system("cls");
-
+    // 存储开始日期
     char startTime[9] = {0};
     char startYear[5];
     char startMonth[3];
     char startDay[3];
-
+    // 存储结束日期
     char endTime[9] = {0};
     char endYear[5];
     char endMonth[3];
@@ -105,7 +106,7 @@ void queryTurnover()
 
     gotoXY(40, 8);
     if(!getString(endDay, 2, 3, 1)) return;
-
+    // 格式化到 startTime, endTime
     sprintf(startTime, "%04s%02s%02s", startYear, startMonth, startDay);
     sprintf(endTime, "%04s%02s%02s", endYear, endMonth, endDay);
 
@@ -119,6 +120,7 @@ void queryTurnover()
     printf("流水号                      服务员编号  台桌编号  时间      金额\n");
     putchar('\n');
 
+    // 遍历
     int total = 0;
     while(billNode != NULL)
     {
@@ -126,7 +128,7 @@ void queryTurnover()
         if(strcmp(startTime, bill->time) <= 0 && strcmp(endTime, bill->time) >= 0) 
         {
             printBill(bill);
-            total += bill->total;
+            total += bill->total; //统计总金额
         }
         billNode = billNode->nxt;
     }

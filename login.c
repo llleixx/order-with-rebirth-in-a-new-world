@@ -40,7 +40,7 @@ void login()
             if(!getString(passwd, 16, 1, 0)) return;
             LinkList *staffNode = staffHead->nxt;
             Staff *staff;
-            bool flag = false;
+            bool flag = false; // 用于记录是否找到
 
             while (staffNode != NULL)
             {
@@ -53,8 +53,10 @@ void login()
                 }
                 staffNode = staffNode->nxt;
             }
+            // 清空 用户名和密码显示
             clear(20, 7, 12);
             clear(21, 8, 23);
+            // 没找到
             if (flag) break;
         }
 

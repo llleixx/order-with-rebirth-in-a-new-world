@@ -1,7 +1,7 @@
 #include "global.h"
 
-/// @brief 打印台桌
-/// @param data 台桌节点
+/// @brief 打印人员信息
+/// @param data 人员节点
 void printStaff(void *data)
 {
     Staff *staff = (Staff*)data;
@@ -23,7 +23,8 @@ void printStaff(void *data)
 	putchar('\n');
 }
 
-//打印台桌信息
+/// @brief 打印台桌信息
+/// @param data 台桌节点
 void printTable(void *data)
 {
 	Table *table = (Table*)data;
@@ -47,6 +48,8 @@ void printTable(void *data)
 	printf("\n");
 }
 
+/// @brief 打印菜谱信息（不显示份数）
+/// @param data 菜谱节点
 void printMenu(void *data)
 {
 	Menu *menu = (Menu*)data;
@@ -56,6 +59,8 @@ void printMenu(void *data)
 	printf("\n");
 }
 
+/// @brief 打印菜谱信息（显示份数）
+/// @param data 菜谱节点
 void printMenu1(void *data)
 {
 	Menu *menu = (Menu*)data;
@@ -66,6 +71,8 @@ void printMenu1(void *data)
 	printf("\n");
 }
 
+/// @brief 打印账单信息
+/// @param data 账单节点
 void printBill(void *data)
 {
 	Bill *bill = (Bill*)data;
@@ -77,6 +84,8 @@ void printBill(void *data)
 	printf("\n");
 }
 
+/// @brief 打印订单信息
+/// @param data 订单节点
 void printOrder(void *data)
 {
 	Order *order = (Order*)data;

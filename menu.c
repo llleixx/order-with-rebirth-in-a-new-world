@@ -7,7 +7,7 @@
 
 extern LinkList *menuHead;
 
-
+/// @brief 增加菜谱
 void addMenu()
 {
 	system("cls");
@@ -42,12 +42,12 @@ void addMenu()
 		memset(menu, 0, sizeof(Menu));
 		strcpy(menu->name, name); // 把名字传进去
 		menu->price = atoi(price);	
-		if (menuHead->nxt != NULL)
+		if (menuHead->nxt != NULL) // 如果菜单当前有菜
 		{
 			Menu *firstMenu = (Menu*)menuHead->nxt->data;
 			menu->id = firstMenu->id + 1; // 传id
 		} 
-		else menu->id = 1000;
+		else menu->id = 1000;  // 如果当前菜单没菜
 		addNode(menuHead, menu); // 存链表
 		writeFile("menu.txt", menuHead, sizeof(Menu)); // 写入文件
 		gotoXY(55, 9);
@@ -85,7 +85,7 @@ void modifyMenu()
         if(!getString(ID, 4, 3, 1)) return;
         int id = atoi(ID);
 
-
+		// 遍历菜谱
 		LinkList *menuNode = menuHead->nxt;
 		Menu *menu;
 		while (menuNode != NULL)
@@ -138,7 +138,8 @@ void modifyMenu()
 	}
 }
 
-void deleteMenu() // 删除菜谱
+/// @brief 删除菜谱
+void deleteMenu()
 {
 	while (1) // 避免输入空的菜谱ID而直接退出
 	{
@@ -204,7 +205,8 @@ void deleteMenu() // 删除菜谱
 	}
 }
 
-void findMenu() // 查找菜谱
+/// @brief 查询菜谱
+void findMenu()
 {
 	while(1)
 	{
@@ -229,6 +231,7 @@ void findMenu() // 查找菜谱
 		if (!getString(ID, 4, 3, 1)) return;
 		int id = atoi(ID);
 
+		// 遍历菜谱
 		LinkList *menuNode = menuHead->nxt;
 		Menu *menu;
 		while (menuNode != NULL)
@@ -255,6 +258,7 @@ void findMenu() // 查找菜谱
 	}
 }
 
+/// @brief 菜谱界面
 void menuView()
 {
 	while(true)

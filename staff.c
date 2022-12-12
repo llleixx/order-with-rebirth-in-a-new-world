@@ -134,6 +134,7 @@ void modifyStaff()
             staff = (Staff*)staffNode->data;
             if(staff->id == id)
             {
+                // 读入信息
                 gotoXY(18, 7);
                 printf("姓名：");
                 if(!getString(name, 8, 2, 1)) return;
@@ -179,6 +180,7 @@ void modifyStaff()
             }
             staffNode = staffNode->nxt;
         }
+        // 没有匹配信息
         gotoXY(55, 6);
         printf("此员工不存在！");
         getchar();
@@ -201,7 +203,6 @@ void deleteStaff()
         putchar('\n');
         printf("--------------------------------------------------");
 
-        // 显示 bug
         gotoXY(55, 6);
 
         printf("删除员工编号：");
@@ -243,6 +244,7 @@ void deleteStaff()
             }
             staffNode = staffNode->nxt;
         }
+        // 没有找到
         gotoXY(55, 7);
 		printf("此员工不存在！");
 		getchar();
@@ -274,6 +276,7 @@ void findStaff()
 
         int id = atoi(ID);
 
+        // 遍历链表
         LinkList *staffNode = staffHead->nxt; 
         Staff *staff;
 
@@ -297,13 +300,14 @@ void findStaff()
             }
             staffNode = staffNode->nxt;
         }
-
+        // 没找到
         gotoXY(55, 7);
 		printf("此员工不存在！");
 		getchar();
     }
 }
 
+/// @brief 人员界面
 void staffView()
 {
     while(true)
