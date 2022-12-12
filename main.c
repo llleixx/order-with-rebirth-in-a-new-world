@@ -5,8 +5,6 @@
 
 // 分别为人员，台桌，账单，订单，菜单的链表表头
 LinkList *staffHead, *tableHead, *billHead, *orderHead, *menuHead;
-// 分别为各链表的长度，目前好像没用
-int staffLen, tableLen, billLen, orderLen, menuLen;
 
 int main()
 {

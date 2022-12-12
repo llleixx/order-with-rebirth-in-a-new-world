@@ -28,7 +28,8 @@ bool getString(char str[], int maxLen, int putType, bool isPlaintext)
         {
             if((isalnum(ch) && putType == 1) || \
             (isalpha(ch) && putType == 2) || \
-            (isdigit(ch) && putType == 3) || (ch < 0 && putType == 4))
+            (isdigit(ch) && putType == 3) || \
+            (ch < 0 && putType == 4))
             {
                 str[len] = ch;
                 isPlaintext ? putchar(ch) : putchar('*');

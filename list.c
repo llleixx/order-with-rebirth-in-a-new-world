@@ -36,7 +36,7 @@ void deleteNode(LinkList *head, LinkList *node)
 }
 
 /// @brief 打印链表
-/// @param p 当前节点
+/// @param p 传入头节点，用于遍历
 /// @param model 打印方式
 void printList(LinkList *p, PrintModel model)
 {
