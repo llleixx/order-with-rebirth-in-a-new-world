@@ -12,7 +12,7 @@ void addStaff()
     system("cls");
 
     // 新增用户的信息
-    char passwd1[7], passwd2[7];
+    char passwd1[17], passwd2[17];
     Staff *staff;
     char name[10];
     int role; 
@@ -39,17 +39,19 @@ void addStaff()
     {
         gotoXY(18, 7);
 		printf("请输入密码：");
-		if(!getString(passwd1, 6, 3, 0)) return;
-
-        clear(55, 6, 26);
+		if(!getString(passwd1, 16, 3, 0)) return;
 
 		gotoXY(18, 8);
 		printf("请确认密码：");
-		if(!getString(passwd2, 6, 3, 0)) return;
+		if(!getString(passwd2, 16, 3, 0)) return;
 		if (strcmp(passwd1, passwd2) != 0)
 		{
 			gotoXY(55, 6);
 			printf("两次密码不相同，请重新输入");
+            getch();
+            clear(18, 7, 24);
+            clear(18, 8, 24);
+            clear(55, 6, 26);
 			continue;
 		}
 		else
@@ -84,6 +86,8 @@ void addStaff()
             staff->id = firstStaff->id + 1;
         }
         else staff->id = 1000;
+
+        MD5Get(passwd1);
         strcpy(staff->passwd, passwd1);
         strcpy(staff->name, name);
         staff->role = role - 48;
@@ -160,10 +164,12 @@ void modifyStaff()
                 if(!ch) return;
                 if(ch == '1')
                 {
+                    // 将输入信息放到 staff 内，并保存
                     gotoXY(55, 9);
                     printf("恭喜你保存成功\n");
                     staff->id = id;
                     strcpy(staff->name, name);
+                    MD5Get(passwd);
                     strcpy(staff->passwd, passwd);
                     staff->role = role - '0';
                     writeFile("staff.txt", staffHead, sizeof(Staff));
@@ -197,7 +203,7 @@ void deleteStaff()
         printf("--------------------------------------------------\n");
         printf("                     删除人员\n");
         printf("--------------------------------------------------\n");
-        printf("编号    姓名            密码                职位  \n");
+        printf("编号    姓名            职位  \n");
         putchar('\n');
         printList(staffHead, printStaff);
         putchar('\n');
@@ -264,7 +270,7 @@ void findStaff()
         printf("--------------------------------------------------\n");
         printf("                     查询人员\n");
         printf("--------------------------------------------------\n");
-        printf("编号    姓名            密码                职位  \n");
+        printf("编号    姓名            职位  \n");
         putchar('\n');
         printList(staffHead, printStaff);
         putchar('\n');
@@ -290,7 +296,7 @@ void findStaff()
                 printf("--------------------------------------------------\n");
                 printf("                     查询结果\n");
                 printf("--------------------------------------------------\n");
-                printf("编号    姓名            密码                角色  \n");
+                printf("编号    姓名            职位  \n");
                 putchar('\n');
                 (*printStaff)(staff);
                 putchar('\n');

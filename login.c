@@ -38,6 +38,11 @@ void login()
             gotoXY(21,8);
             printf(" 密码: ");
             if(!getString(passwd, 16, 1, 0)) return;
+
+            // MD5 加密，passwd 转化为本身的 md5 值
+            MD5Get(passwd);
+
+            // 查找用户
             LinkList *staffNode = staffHead->nxt;
             Staff *staff;
             bool flag = false; // 用于记录是否找到
@@ -45,6 +50,7 @@ void login()
             while (staffNode != NULL)
             {
                 staff = (Staff*)staffNode->data;
+                // 匹配用户名与 MD5 加密
                 if(staff->id == id && strcmp(staff->passwd, passwd) == 0)
                 {
                     memcpy(curStaff, staff, sizeof(Staff));
@@ -54,10 +60,19 @@ void login()
                 staffNode = staffNode->nxt;
             }
             // 清空 用户名和密码显示
-            clear(20, 7, 12);
-            clear(21, 8, 23);
-            // 没找到
+
+            // 找到了
             if (flag) break;
+            else
+            {
+                gotoXY(55, 6);
+			    printf("用户名不存在或密码错误");
+                getch();
+                // 清空错误信息和用户名及密码显示
+                clear(55, 6, 22);
+                clear(20, 7, 20);
+                clear(21, 8, 23);
+            }
         }
 
         // 跳转界面

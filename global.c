@@ -7,7 +7,6 @@ void printStaff(void *data)
     Staff *staff = (Staff*)data;
     printf("%-8d", staff->id);
 	printf("%-16s", staff->name);
-	printf("%-20s", staff->passwd);
 	switch(staff->role)
 	{
 		case 0:
